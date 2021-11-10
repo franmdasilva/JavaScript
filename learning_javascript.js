@@ -92,4 +92,84 @@ let motor = "combustível"
 carro[motor] = "gasolina"
 
 console.log(carro.ano, carro['modelo'], carro)
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+
+const soma = function (a, b) { //função anônima
+    return a + b
+}
+
+console.log("A soma de 2 + 3 é: ",soma(2, 3));
+
+( // função autoinvocável
+    function () {
+        let nome = "Franciele"
+        return console.log(nome)
+    }
+)();
+
+(
+    function (a, b) {
+        return console.log(`A soma de ${a} + ${b} é: `,a + b)
+    }
+)(1, 2);
+
+const soma2 = (
+    function (a2, b2) {
+        return a2 + b2;
+    }
+)(11, 17);
+
+console.log(soma2)
+
+const calc = function (operacao, n1, n2) { // callback (função composta)
+    return operacao(n1,n2)
+}
+
+const div = function (n1, n2) {
+    return console.log(`A divisão de ${n1} por ${n2} é: `, n1/n2)
+}
+
+const resultDiv = calc(div, 47, 99)
+
+function findMin() { // usando o objeto "arguments"
+    let min = Infinity
+
+    for (let i = 0; i < arguments.length; i++) {
+       if (arguments[i] < min) {
+           min = arguments[i]
+       }
+    }
+    return min
+}
+
+let vetor = [1, -2, 3, -4, 5, 6, 7, 8, 9, -1]
+
+console.log(findMin(), findMin(9, 4, 2, 99, 3))
+console.log(findMin(...vetor)) // usando spread
+
+function imprimiSegundo(...args) { // usando rest
+    console.log(args[2])
+}
+
+imprimiSegundo(1, -2, 3)
+imprimiSegundo(-4, 5, 6, 7, 8, 9, -1)
+
+const objetoNome = {
+    id: 1,
+    fullName: {
+        firstName: "Ana",
+        secondName: "Eduarda",
+        familyName: "Gomes"
+    }
+}
+
+function returnIdade({idade}) {
+    return idade
+}
+
+console.log(returnIdade(objeto))
+
+function getFirstLast({fullName: {firstName: first, familyName: last}}) {
+    return `${first} ${last}`
+}
+
+console.log(getFirstLast(objetoNome))
