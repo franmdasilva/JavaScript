@@ -84,7 +84,8 @@ console.log(objeto, Object.values(objeto), Object.keys(objeto))
 let carro = {
     modelo: "Celta",
     ano: 2013,
-    portas: 2
+    portas: 2,
+    nome: "Celtinha"
 }
 
 let motor = "combustível"
@@ -133,7 +134,7 @@ const resultDiv = calc(div, 47, 99)
 function findMin() { // usando o objeto "arguments"
     let min = Infinity
 
-    for (let i = 0; i < arguments.length; i++) {
+    for (let i = 0; i < arguments.length; i++) { //usando for
        if (arguments[i] < min) {
            min = arguments[i]
        }
@@ -173,3 +174,124 @@ function getFirstLast({fullName: {firstName: first, familyName: last}}) {
 }
 
 console.log(getFirstLast(objetoNome))
+
+// usando "for in" para objetos
+function forInExemplo(obj) {
+    for (prop in obj) {
+        console.log(prop, "\n", obj[prop])
+    }
+}
+
+forInExemplo(objetoNome)
+
+// usando "for of" para iteráveis
+function forOfExemplo(iteravel) {
+    for (elemento of iteravel) {
+        console.log(elemento)
+    }
+}
+
+forOfExemplo(FIRST_NAME)
+
+forOfExemplo(vetor)
+
+function whileExemplo() {
+    let num = 0
+
+    while (num <= 3) {
+        console.log(num)
+        num++
+    }
+}
+
+whileExemplo()
+
+// "do while" sempre executa primeira iteração mesmo que não satisfaça o while
+function doWhileExemplo() {
+    let num = -1
+
+    do {
+        console.log(num)
+        num--
+    } while (num > 0);
+}
+
+doWhileExemplo()
+
+function maiorQueDez(num) {  // função para treinar uso de if e else
+    const NEGATIVO = num < 0
+    const MAIOR_QUE_DEZ = num > 10
+    
+    if (NEGATIVO) {
+        return "\n Esse número é negativo."
+    } else if (!NEGATIVO && MAIOR_QUE_DEZ) {
+        return "\n Esse número é positivo e maior que 10."
+    }
+
+    return "\n Este número é positivo e menor que 10."
+}
+
+console.log(maiorQueDez(-1), maiorQueDez(5), maiorQueDez(20))
+
+function getFood(food) { // função para treinar uso de switch
+    switch (food) {
+        case 1:
+            return "\n arroz"
+        case 2:
+            return "\n feijão"
+        case 3:
+            return "\n batata frita"
+        case 4:
+            return "\n chuchu refogado"
+        default:
+            return "\n marmita pronta"
+    }
+}
+
+console.log(getFood(3), getFood("3"))
+
+// usando método "this" em objetos
+const pessoa = {
+    firstName: "Franciele",
+    lastName: "Silva",
+    id: 23,
+    fullName: function () {
+        return this.firstName + " " + this.lastName
+    },
+    getId: function () {
+        return this.id
+    }
+}
+
+console.log(pessoa.fullName(), pessoa.getId())
+
+function getSomething() {
+    console.log(this.nome)
+}
+
+getSomething.call(objeto)
+getSomething.call(carro)
+
+function idade(today) {
+    console.log(today - this.ano)
+}
+
+idade.call(carro,2021)
+idade.apply(carro,[2021]) // usando apply tem que colocar []
+
+// usando "bind"
+const retornaIdade = function () {
+    return console.log(2021 - this.ano)
+}
+
+let Bhe = retornaIdade.bind({ano: 1952})
+
+Bhe()
+
+// usando "arrow function"
+const sayHello = () => "Hello :) !!!"
+
+const sum = (a, b) => a + b
+
+console.log(sayHello(), sum(10, 34))
+
