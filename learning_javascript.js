@@ -295,3 +295,27 @@ const sum = (a, b) => a + b
 
 console.log(sayHello(), sum(10, 34))
 
+// usando "map"
+const myMap = new Map()
+
+myMap.set('laranja', 'fruta');
+myMap.set('gato', 'animal')
+
+console.log(myMap, myMap.get('laranja'))
+
+myMap.delete('gato')
+
+console.log(myMap, myMap.get('gato'))
+
+// usando "set"
+
+const myArray = [1, 2, 1, 3, 3, 6, 7, 1, 9]
+
+const mySet = new Set(myArray)
+
+console.log(myArray, mySet)
+
+mySet.add(4)
+mySet.delete(9)
+
+console.log(mySet, mySet.has(5))
