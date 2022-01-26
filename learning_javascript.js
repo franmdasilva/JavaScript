@@ -319,3 +319,52 @@ mySet.add(4)
 mySet.delete(9)
 
 console.log(mySet, mySet.has(5))
+
+// trabalhando com classes
+class veiculo {
+    constructor (type = 'veiculo') {
+        this.type = type 
+    }
+
+    get type() {
+        return this._type
+    }
+
+    set type(val) {
+        this._type = val.toUpperCase()
+    }
+
+    Descrever () {
+        console.log('Isto é um',this._type)
+    }
+
+    Ligar() {
+        console.log('Gire a chave.')
+    }
+}
+
+let onibus = new veiculo()
+
+console.log(onibus.type)
+onibus.Descrever()
+onibus.Ligar()
+
+class bicicleta extends veiculo {
+    constructor() {
+        super('bicicleta')
+    }
+
+    Descrever() {
+        super.Descrever()
+    }
+
+    Ligar() {
+        console.log('Comece a pedalar.')
+    }
+}
+
+let myBike = new bicicleta
+
+console.log(myBike.type)
+myBike.Descrever()
+myBike.Ligar()
