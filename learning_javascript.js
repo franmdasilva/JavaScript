@@ -335,7 +335,7 @@ class veiculo {
     }
 
     Descrever () {
-        console.log('Isto é um',this._type)
+        console.log('Isto é um',this.type)
     }
 
     Ligar() {
@@ -343,7 +343,7 @@ class veiculo {
     }
 }
 
-let onibus = new veiculo()
+let onibus = new veiculo('onibus')
 
 console.log(onibus.type)
 onibus.Descrever()
