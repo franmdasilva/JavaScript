@@ -345,9 +345,7 @@ class veiculo {
 
 let onibus = new veiculo('onibus')
 
-console.log(onibus.type)
-onibus.Descrever()
-onibus.Ligar()
+// usando herança
 
 class bicicleta extends veiculo {
     constructor() {
@@ -364,6 +362,37 @@ class bicicleta extends veiculo {
 }
 
 let myBike = new bicicleta
+
+// criando uma promisse simples
+
+const minhaPromessa = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(console.log('Resolvida!'));
+    }, 1000);
+});
+
+// criando uma função assíncrona com um await
+
+async function resolvPromise() {
+    const myPromise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('Resolvida');
+        }, 3000);
+    });
+
+    const resolved = await myPromise
+    .then((result) => result + ' passando pelo then')
+    .then((result) => result + ' e agora acabou!')
+    .catch((err) => console.log(err.name));
+
+    return console.log(resolved);
+}
+
+resolvPromise()
+
+console.log(onibus.type)
+onibus.Descrever()
+onibus.Ligar()
 
 console.log(myBike.type)
 myBike.Descrever()
