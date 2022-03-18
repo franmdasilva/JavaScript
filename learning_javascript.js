@@ -388,8 +388,6 @@ async function resolvPromise() {
     return console.log(resolved);
 }
 
-resolvPromise()
-
 console.log(onibus.type)
 onibus.Descrever()
 onibus.Ligar()
@@ -397,3 +395,42 @@ onibus.Ligar()
 console.log(myBike.type)
 myBike.Descrever()
 myBike.Ligar()
+
+resolvPromise();
+
+// trabalhando com o objeto date
+// a data inicial é 1 de janeiro de 1970
+// um detalhe importante a notar é que o mês começa com zero
+// assim o mês 1 é fevereiro e não janeiro
+
+var inicio = Date.now();
+let agora = new Date();
+let data1 = new Date(2010,9,10,7,10,10,10);
+let data2 = new Date("October 10, 2010 07:10:10.010 GMT+0003")
+
+console.log(agora);
+console.log(data1);
+console.log(data2);
+
+var fim = Date.now();
+var intervalo = fim - inicio;
+
+console.log(intervalo);
+
+function imprimirTempoDecorrido(fTeste) {
+	var nHoraInicial = Date.now(),
+        vRetorno = fTeste(),
+        nHoraFinal = Date.now();
+
+	console.log("Tempo decorrido: " + String(nHoraFinal - nHoraInicial) + " milisegundos");
+	return vRetorno;
+}
+
+function count () {
+    let num = 0;
+    for (let i = 0; i < 10**7; i++) {
+        num++;
+    }
+}
+
+imprimirTempoDecorrido(count)
